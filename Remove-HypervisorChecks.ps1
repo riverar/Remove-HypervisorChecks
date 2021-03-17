@@ -114,8 +114,10 @@ if($Nvidia) {
     )
 
     Write-Output "[+] Looking for target byte pattern..."
-    #$Matches = Find-BytePattern -FilePath $KernelDriverPath -Pattern 'E8 A8 FD FF FF 85 C0 75 6C'   # Drivers version 446.14
-    $Matches = Find-BytePattern -FilePath $KernelDriverPath -Pattern 'E8 9C FD FF FF 85 C0 75 6C'    # Drivers version 451.67
+    #$Matches = Find-BytePattern -FilePath $KernelDriverPath -Pattern 'E8 A8 FD FF FF 85 C0 75 6C'   # 446.14
+    #$Matches = Find-BytePattern -FilePath $KernelDriverPath -Pattern 'E8 9C FD FF FF 85 C0 75 6C'   # 451.67
+    $Matches = Find-BytePattern -FilePath $KernelDriverPath -Pattern 'E8 A4 FD FF FF 85 C0 75 6C'    # 461.40
+    
     if($Matches.Count -ne 1) {
         Write-Error "[!] Offset found $($Matches.Count) times."
     }
